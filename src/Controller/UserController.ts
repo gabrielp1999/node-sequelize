@@ -1,4 +1,5 @@
 import User from "../model/UserModel";
+import Car from "../model/CarModel";
 import { Request, Response } from "express";
 
 
@@ -73,6 +74,17 @@ class UserController{
             }
             await User.update(user, { where: { id }});
             return res.send({ user });          
+        } catch (err) {
+            console.error(err);
+            return res.status(500).send({ message: err });
+        }
+    }
+
+    async getUserAndData(req: Request, res: Response){
+        try {
+            const { id } = req.params;
+            const user = await User.findOne({ include: Car, where: { id } });
+            return res.send({ user: user?.get({ plain: true})});
         } catch (err) {
             console.error(err);
             return res.status(500).send({ message: err });

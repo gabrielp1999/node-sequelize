@@ -14,6 +14,7 @@ const Car = sequelize.define('Car', {
     }
 })
 
+User.hasMany(Car);
 Car.belongsTo(User);
 
 export default Car;

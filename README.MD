@@ -1,1 +1,1 @@
-# App com Node, Typescript, Sequelize na Arquitetura MVC
+# App com Node, Typescript, Sequelize e Arquitetura MVC.

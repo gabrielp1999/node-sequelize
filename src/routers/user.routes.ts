@@ -6,5 +6,6 @@ const userRouter = Router();
 
 userRouter.post('/', userController.create);
 userRouter.get('/', userController.getAll);
+userRouter.get('/:id', userController.getById);
 
 export { userRouter };

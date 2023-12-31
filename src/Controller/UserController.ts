@@ -17,7 +17,7 @@ class UserController{
                 email,
                 age
             })
-            return res.status(201).send({ message: 'success', user: newUser});
+            return res.status(201).send({ user: newUser});
         } catch (err) {
             console.error(err);
             return res.status(500).send({ message: err });
@@ -27,7 +27,18 @@ class UserController{
     async getAll(req: Request, res: Response){
         try {
             const users = await User.findAll({ raw: true });
-            return res.send({ message: 'success', users })
+            return res.send({ users })
+        } catch (err) {
+            console.error(err);
+            return res.status(500).send({ message: err });
+        }
+    }
+
+    async getById(req: Request, res: Response){
+        try {
+            const { id } = req.params;
+            const user = await User.findOne({ where: { id } });
+            return res.send({ user });
         } catch (err) {
             console.error(err);
             return res.status(500).send({ message: err });

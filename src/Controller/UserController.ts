@@ -56,6 +56,29 @@ class UserController{
         }
     }
 
+    async update(req: Request, res: Response){
+        try {
+            const { id } = req.params;
+            const { name, email, age } = req.body;
+            console.log(req.body)
+    
+            if(!name || !email){
+                return res.status(400).send({ message: 'name and email are required' });
+            }
+
+            const user = {
+                name,
+                email,
+                age
+            }
+            await User.update(user, { where: { id }});
+            return res.send({ user });          
+        } catch (err) {
+            console.error(err);
+            return res.status(500).send({ message: err });
+        }
+    }
+
 
 }
 

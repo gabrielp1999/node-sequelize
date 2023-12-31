@@ -1,1 +1,1 @@
-# App com Node, Typescript, Sequelize e Arquitetura MVC.
+# App com Node, Typescript, Mysql no banco, Sequelize ORM e Arquitetura MVC.

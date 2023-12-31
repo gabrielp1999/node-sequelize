@@ -10,7 +10,7 @@ app.use(cors())
 const PORT = 3001;
 
 app.use('/user', userRouter);
-app.use("/car", carRouter);
+app.use('/car', carRouter);
 
 app.get('/', (req, res) => {
     return res.status(200).send({ message: 'Welcome to the API' });

@@ -21,6 +21,18 @@ class CarController {
             return res.status(500).send({ message: err });
         }
     }
+
+    async deleteById(req: Request, res: Response){
+        try {
+            const { id } = req.params;
+            await Car.destroy({ where: { id } });
+            return res.send({ message: "successfully deleted" });
+        } catch (err) {
+            console.error(err);
+            return res.status(500).send({ message: err });
+        }
+    }
+    
 }
 
 export default CarController;

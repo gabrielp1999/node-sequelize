@@ -45,6 +45,17 @@ class UserController{
         }
     }
 
+    async deleteById(req: Request, res: Response){
+        try {
+            const { id } = req.params;
+            await User.destroy({ where: { id } });
+            return res.send({ message: "successfully deleted" });
+        } catch (err) {
+            console.error(err);
+            return res.status(500).send({ message: err });
+        }
+    }
+
 
 }
 

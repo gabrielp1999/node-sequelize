@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
     return res.status(200).send({ message: 'Welcome to the API' });
 })
 
-sequelize.sync()
+sequelize
+//.sync({force: true}) o force, ele força o app a criar tabelas novas, deletando as antigas
+.sync()
 .then(() => {
     console.log("connected to the database");
     app.listen(PORT, () => {
